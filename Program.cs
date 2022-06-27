@@ -20,7 +20,6 @@ while (!int.TryParse(maxGamesInput, out _) || int.Parse(maxGamesInput) % 2 == 0)
     maxGamesInput = Console.ReadLine();
 }
 int maxGames = int.Parse(maxGamesInput);
-int game = 1;
 
 int userScore = 0;
 int cpuScore = 0;
@@ -33,7 +32,7 @@ Console.WriteLine("***********\n");
 
 while (userScore <= maxGames / 2 && cpuScore <= maxGames / 2)
 {
-    Console.WriteLine($"Game {game} out of {maxGames}\n");
+    Console.WriteLine($"Game {userScore + cpuScore + 1} out of {maxGames}\n");
     Console.Write("Type 'r' for rock, 's' for scissor, 'p' for paper: ");
     char userChoiceChar = Console.ReadKey().KeyChar;
 
@@ -64,13 +63,11 @@ while (userScore <= maxGames / 2 && cpuScore <= maxGames / 2)
     {
         Console.WriteLine("You win\nResult: You " + (++userScore) + " - CPU " + (cpuScore));
         results = results.Append("You won").ToArray();
-        game++;
     }
     else
     {
         Console.WriteLine("CPU wins\nResult: You " + (userScore) + " - CPU " + (++cpuScore));
         results = results.Append("CPU won").ToArray();
-        game++;
     }
 
     Console.WriteLine("---------\n");
