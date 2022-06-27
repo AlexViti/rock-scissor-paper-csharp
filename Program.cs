@@ -62,3 +62,13 @@ while (userScore <= maxGames / 2 && cpuScore <= maxGames / 2)
 
     Console.WriteLine("---------\n");
 }
+
+Console.WriteLine("Game over\n*************************");
+if (userScore > cpuScore)
+{
+    Console.WriteLine("Congratulations!!! YOU WON");
+}
+else
+{
+    Console.WriteLine("Too Bad! YOU LOST");
+}
