@@ -27,6 +27,7 @@ int cpuScore = 0;
 
 int[] userChoices = Array.Empty<int>();
 int[] cpuChoices = Array.Empty<int>();
+string[] results = Array.Empty<string>();
 
 Console.WriteLine("***********\n");
 
@@ -57,15 +58,18 @@ while (userScore <= maxGames / 2 && cpuScore <= maxGames / 2)
     if (userChoice == cpuChoice)
     {
         Console.WriteLine("Tie");
+        results = results.Append("Tied").ToArray();
     }
     else if ((userChoice == 0 && cpuChoice == 1) || (userChoice == 1 && cpuChoice == 2) || (userChoice == 2 && cpuChoice == 0))
     {
         Console.WriteLine("You win\nResult: You " + (++userScore) + " - CPU " + (cpuScore));
+        results = results.Append("You won").ToArray();
         game++;
     }
     else
     {
         Console.WriteLine("CPU wins\nResult: You " + (userScore) + " - CPU " + (++cpuScore));
+        results = results.Append("CPU won").ToArray();
         game++;
     }
 
@@ -84,19 +88,7 @@ else
 
 Console.WriteLine("----- RECAP -----\n");
 
-for (int i = 0; i < userChoices.Length; i++)
+for (int i = 0; i < results.Length; i++)
 {
-    Console.Write($"You chose {choiceNames[userChoices[i]]} - CPU chose {choiceNames[cpuChoices[i]]}");
-    if (userChoices[i] == cpuChoices[i])
-    {
-        Console.WriteLine(" - Tie");
-    }
-    else if ((userChoices[i] == 0 && cpuChoices[i] == 1) || (userChoices[i] == 1 && cpuChoices[i] == 2) || (userChoices[i] == 2 && cpuChoices[i] == 0))
-    {
-        Console.WriteLine(" - You won");
-    }
-    else
-    {
-        Console.WriteLine(" - CPU won");
-    }
+    Console.WriteLine($"You chose {choiceNames[userChoices[i]]} - CPU chose {choiceNames[cpuChoices[i]]} - {results[i]}");
 }
